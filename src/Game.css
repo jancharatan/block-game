@@ -1,0 +1,66 @@
+.game {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.three-wide-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.individual-square {
+  width: 32px;
+  height: 32px;
+  outline: 2px solid gray;
+}
+
+.quadrant {
+  outline: 2px solid black;
+}
+
+.square-occupied {
+  background-color: black;
+  outline: 2px solid black;
+}
+
+.square-light {
+  background-color: white;
+}
+
+.square-dark {
+  background-color: lightgrey;
+}
+
+.play-area {
+  padding-top: 66px;
+  display: flex; 
+  justify-content: center;
+  width: 420px;
+  height: 600px;
+  background-color: lightskyblue;
+}
+
+.play-area-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-tile-row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 288px;
+}
+
+.new-tile {
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
