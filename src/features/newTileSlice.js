@@ -1,4 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import tileList from '../tiles/tileList';
+
+const getRandomTile = () => {
+  return tileList[Math.floor(Math.random()*tileList.length)];
+}
 
 export const newTileSlice = createSlice({
   name: 'newTile',
@@ -6,18 +11,21 @@ export const newTileSlice = createSlice({
     newTiles: ["", "", ""]
   },
   reducers: {
-    changeFirst: (state, action) => {
-        state.newTiles[0] = action.payload
+    resetFirst: (state) => {
+      state.newTiles[0] = "";
     },
-    changeSecond: (state, action) => {
-        state.newTiles[1] = action.payload
+    resetSecond: (state) => {
+      state.newTiles[1] = "";
     },
-    changeThird: (state, action) => {
-        state.newTiles[2] = action.payload
+    resetThird: (state) => {
+      state.newTiles[2] = "";
     },
+    generateNewTiles: (state) => {
+      state.newTiles = [getRandomTile(), getRandomTile(), getRandomTile()];
+    }
   },
 })
 
-export const { changeFirst, changeSecond, changeThird } = newTileSlice.actions;
+export const { resetFirst, resetSecond, resetThird, generateNewTiles } = newTileSlice.actions;
 
 export default newTileSlice.reducer;

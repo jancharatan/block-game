@@ -13,7 +13,7 @@ const GameBoard = () => {
         const { offsetTop, offsetLeft } = boardRef.current;
         dispatch(changeOffsetLeft(offsetLeft));
         dispatch(changeOffsetTop(offsetTop));
-    })
+    });
 
     return (
         <div ref={boardRef}>

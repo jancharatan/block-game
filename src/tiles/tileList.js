@@ -1,6 +1,9 @@
-export const tileList = [
+const tileList = [
     'cross',
-    'fiveLineAcross',
-    'fiveLineDown',
-    'singleDot'
-]
+    'singleDot',
+    'fiveAcross',
+    'tShape',
+    'reverseLShape',
+];
+
+export default tileList;
