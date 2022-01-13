@@ -5,22 +5,30 @@ import { RiRestartFill } from 'react-icons/ri';
 import { useSelector, useDispatch } from "react-redux";
 import './Game.css';
 import { resetBoard } from './features/boardSlice';
-import { resetScore } from './features/scoreSlice';
+import { resetGameOver, resetScore, setGameOver } from './features/gameSlice';
 import { generateNewTiles } from './features/newTileSlice';
+import { canPlaceTiles } from './functions/canPlaceTiles';
 
 const PlayScreen = () => {
     const dispatch = useDispatch();
-    const score = useSelector(state => state.score.score);
+    const score = useSelector(state => state.game.score);
     const newTiles = useSelector(state => state.newTile.newTiles);
+    const board = useSelector(state => state.board.currentBoard);
+    const gameOver = useSelector(state => state.game.gameOver);
 
     if (newTiles.every(tile => tile === "")) {
         dispatch(generateNewTiles());
+    }
+
+    if (!canPlaceTiles(board, newTiles)) {
+        dispatch(setGameOver());
     }
 
     const restartGame = () => {
         dispatch(resetBoard());
         dispatch(resetScore());
         dispatch(generateNewTiles());
+        dispatch(resetGameOver())
     }
 
     return (
@@ -34,7 +42,7 @@ const PlayScreen = () => {
                     </div>
                     Score: {score}
                 </div>
-                <GameBoard />
+                {gameOver ?  <div className="game-over-wrapper"> <div className="game-over stroke"> Game Over </div> <div className="game-over-screen"> <GameBoard/> </div> </div>  : <GameBoard />}
                 <div className="new-tile-row">
                     <div style={{width: "33%"}}>
                         <NewTile slot={0} currentTile={newTiles[0]} />

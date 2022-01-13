@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import tileList from '../tiles/tileList';
 
 const getRandomTile = () => {
-  return tileList[Math.floor(Math.random()*tileList.length)];
+  const tileNames = Object.keys(tileList);
+  return tileNames[Math.floor(Math.random()*tileNames.length)];
 }
 
 export const newTileSlice = createSlice({

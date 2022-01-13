@@ -6,7 +6,7 @@ import { findTile } from '../functions/findTile';
 import { checkBoard } from '../functions/checkBoard';
 import { tryToPlace } from '../functions/tryToPlace';
 import { changeBoard } from '../features/boardSlice';
-import { incrementScore } from '../features/scoreSlice';
+import { incrementScore } from '../features/gameSlice';
 import { resetFirst, resetSecond, resetThird } from '../features/newTileSlice';
 
 const Tile = ({ slot, svg, size, score, setSize, tileList }) => {

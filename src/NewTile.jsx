@@ -4,14 +4,18 @@ import Cross from './tiles/Cross';
 import SingleDot from './tiles/SingleDot';
 import FiveAcross from './tiles/FiveAcross';
 import TShape from './tiles/TShape';
+import UpsideDownLShape from './tiles/UpsideDownLShape';
 import ReverseLShape from './tiles/ReverseLShape';
+import SShape from './tiles/SShape';
 
 const NewTile = ({ slot, currentTile}) => {
     const [crossSize, setCrossSize] = useState(96 * (1/2));
     const [singleDotSize, setSingleDotSize] = useState(32 * (1/2));
     const [fiveAcrossSize, setFiveAcrossSize] = useState(160 * (1/2));
     const [tShapeSize, setTShapeSize] = useState(96 * (1/2));
+    const [upsideDownLShapeSize, setUpsideDownLShapeSize] = useState(96 * (1/2));
     const [reverseLShapeSize, setReverseLShapeSize] = useState(96 * (1/2));
+    const [sShapeSize, setSShapeSize] = useState(96 * (1/2));
 
     switch(currentTile) {
         case 'cross':
@@ -22,8 +26,12 @@ const NewTile = ({ slot, currentTile}) => {
             return <Tile slot={slot} svg={FiveAcross(fiveAcrossSize)} score={5} size={fiveAcrossSize} setSize={setFiveAcrossSize} tileList={[[0, 0], [0, 1], [0, 2], [0, 3], [0, 4]]} />
         case 'tShape':
             return <Tile slot={slot} svg={TShape(tShapeSize)} score={5} size={tShapeSize} setSize={setTShapeSize} tileList={[[0, 0], [0, 1], [0, 2], [1, 1], [2, 1]]} />
+        case 'upsideDownLShape':
+            return <Tile slot={slot} svg={UpsideDownLShape(upsideDownLShapeSize)} score={4} size={upsideDownLShapeSize} setSize={setUpsideDownLShapeSize} tileList={[[0, 0], [0, 1], [1, 0], [2, 0]]} />
         case 'reverseLShape':
             return <Tile slot={slot} svg={ReverseLShape(reverseLShapeSize)} score={4} size={reverseLShapeSize} setSize={setReverseLShapeSize} tileList={[[0, 1], [1, 1], [2, 1], [2, 0]]} />
+        case 'sShape':
+            return <Tile slot={slot} svg={SShape(sShapeSize)} score={4} size={sShapeSize} setSize={setSShapeSize} tileList={[[0, 1], [1, 0], [1, 1], [2, 0]]} />
         default:
             return <div className="new-tile" />
     }
